@@ -483,6 +483,12 @@ vector<MapPoint*> System::GetTrackedMapPoints()
     return mTrackedMapPoints;
 }
 
+vector<MapPoint*> System::GetAllMapPoints()
+{
+    unique_lock<mutex> lock(mMutexState);
+    return mpMap -> GetAllMapPoints();
+}
+
 vector<cv::KeyPoint> System::GetTrackedKeyPointsUn()
 {
     unique_lock<mutex> lock(mMutexState);
